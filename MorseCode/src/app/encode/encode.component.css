@@ -1,0 +1,29 @@
+#encode {
+  display: flex;
+  flex-direction: column;
+
+  margin: 3%;
+  background-color: rgb(187, 187, 187);
+  padding: 15px;
+  border-radius: 25px;
+  width: 25%;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background-color: rgb(187, 187, 187);
+}
+button {
+  background-color: rgb(187, 187, 187);
+  border: none;
+  border: 1px solid black
+}
+#user-input input {
+  margin-right: 20px;
+}
+
+#result {
+  margin-top: 1%;
+}
