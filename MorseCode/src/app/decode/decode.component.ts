@@ -32,17 +32,24 @@ export class DecodeComponent {
       return;
     }
 
-    const morseCharacters = this.morseCode().trim().split(' ');
+    const morseText = this.morseCode().trim().split('  ');
     let decodedMessage = '';
 
-    for (const morseChar of morseCharacters) {
-      if (morseToText[morseChar] !== undefined) {
-        decodedMessage += morseToText[morseChar];
-      } else {
-        this.errorMessage = `Unknown Morse code: ${morseChar}`;
-        this.decodedText = '';
-        return;
+    for (const word of morseText) {
+      const morseCharacters = word.split(' ');
+      console.log(morseCharacters)
+
+      for (const morseChar of morseCharacters) {
+        if (morseToText[morseChar] !== undefined) {
+          decodedMessage += morseToText[morseChar];
+        } else {
+          this.errorMessage = `Unknown Morse code: ${morseChar}`;
+          this.decodedText = '';
+          return;
+        }
       }
+
+      decodedMessage += ' ';
     }
 
     this.decodedText = decodedMessage;

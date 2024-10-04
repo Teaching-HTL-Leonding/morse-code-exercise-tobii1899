@@ -43,16 +43,21 @@ export class EncodeComponent {
 
     const resultHTML = document.getElementById('encode-result') as HTMLInputElement;
 
-    if(this.userText().trim() === '' || !/^[A-Za-z]+$/.test(this.userText())) {
+    if(!/^[A-Za-z ]+$/.test(this.userText())) {
       resultHTML!.value = '';
       return
     } else {
       resultHTML!.value = '';
 
       this.userText().split('').forEach((char) => {
-        const charCode = char.toUpperCase().charCodeAt(0);
-        const morseChar = morseCode[charCode - 65];
-        resultHTML!.value += morseChar + ' ';
+
+        if(char === ' ') {
+          resultHTML!.value += ' ';
+        } else {
+          const charCode = char.toUpperCase().charCodeAt(0);
+          const morseChar = morseCode[charCode - 65];
+          resultHTML!.value += morseChar + ' ';
+        }
       });
     }
   }
